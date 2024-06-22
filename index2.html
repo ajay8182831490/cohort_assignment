@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="counter" id="counter">
+
+    </div>
+
+    <script>
+        let state = {
+            count: 0
+        }
+        // here we declare the state
+        function onpressButton() {
+            state.count++;
+            buttonrender();
+
+        }
+        function buttoncomponets(count) {
+            const button = document.createElement("button");
+            button.innerHTML = `counter ${count}`;
+            button.setAttribute('onclick', 'onpressButton()');
+            return button;
+
+
+        }
+        function buttonrender() {
+            document.getElementById("counter").innerHTML = "";
+            const button = buttoncomponets(state.count);
+
+
+
+            document.getElementById('counter').appendChild(button);
+        }
+        buttonrender();
+
+    </script>
+</body>
+
+</html>

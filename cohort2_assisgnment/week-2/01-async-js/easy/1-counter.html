@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="counter">0</div>
+    <button id="stop" onclick="stopCounter()">Stop</button>
+    <button id="reset" onclick="resetCounter()">Reset</button>
+    <script>
+        let counter = 0;
+        let intervalId;
+
+        // Function to update the counter
+        function update() {
+            counter++;
+            document.getElementById("counter").innerHTML = counter;
+        }
+
+        function startCounter() {
+            intervalId = setInterval(update, 1000);
+        }
+
+        function stopCounter() {
+            clearInterval(intervalId);
+        }
+
+        function resetCounter() {
+            stopCounter();
+            counter = 0;
+            document.getElementById("counter").innerHTML = counter;
+            startCounter();
+        }
+
+
+        startCounter();
+    </script>
+</body>
+
+</html>

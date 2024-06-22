@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounce Example with onchange</title>
+</head>
+
+<body>
+
+    <div class="input">
+        <input type="text" id="debouncedInput" onchange="debouncedInputChange()">
+    </div>
+
+    <script>
+        function handleChange() {
+            console.log("Debounced onchange function called");
+        }
+
+        function debounce(func, delay) {
+            let timer;
+            return function () {
+                clearTimeout(timer);
+                timer = setTimeout(func, delay);
+            };
+        }
+
+        const debouncedInputChange = debounce(handleChange, 300);
+
+        document.getElementById("debouncedInput").addEventListener('input', debouncedInputChange);
+    </script>
+</body>
+
+</html>
